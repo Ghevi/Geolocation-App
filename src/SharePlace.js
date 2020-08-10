@@ -2,11 +2,11 @@ import { Modal } from './UI/Modal';
 import { Map } from './UI/Map';
 import { getCoordsFromAddress, getAddressFromCoords } from './Utility/Location';
 
-import { GOOGLE_APY_KEY } from '../api-key';
+// import { GOOGLE_APY_KEY } from '../api-key';
 
 class PlaceFinder {
   constructor() {
-    document.querySelector('script').src += GOOGLE_APY_KEY;
+    // document.querySelector('script').src += GOOGLE_APY_KEY;
 
     const addressForm = document.querySelector('form');
     const locateUserBtn = document.getElementById('locate-btn');
