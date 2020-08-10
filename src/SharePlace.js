@@ -2,8 +2,12 @@ import { Modal } from './UI/Modal';
 import { Map } from './UI/Map';
 import { getCoordsFromAddress, getAddressFromCoords } from './Utility/Location';
 
+import { GOOGLE_APY_KEY } from '../api-key';
+
 class PlaceFinder {
   constructor() {
+    document.querySelector('script').src += GOOGLE_APY_KEY;
+
     const addressForm = document.querySelector('form');
     const locateUserBtn = document.getElementById('locate-btn');
     this.shareBtn = document.getElementById('share-btn');
@@ -38,6 +42,24 @@ class PlaceFinder {
     } else {
       this.map = new Map(coordinates);
     }
+
+    fetch('http://localhost:3000/add-location', {
+      method: 'POST',
+      body: JSON.stringify({
+        address: address,
+        lat: coordinates.lat,
+        lng: coordinates.lng,
+      }),
+      headers: {
+        'Content-Type': 'application/json',
+      },
+    })
+      .then((response) => {
+        return response.json();
+      })
+      .then((data) => {
+        console.log(data);
+      });
 
     this.shareBtn.disabled = false;
     const sharedLinkInputEl = document.getElementById('share-link');

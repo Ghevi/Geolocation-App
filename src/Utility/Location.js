@@ -1,4 +1,4 @@
-const GOOGLE_APY_KEY = '';
+import { GOOGLE_APY_KEY } from '../../api-key';
 
 export async function getAddressFromCoords(coords) {
   const response = await fetch(

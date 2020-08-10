@@ -1,7 +1,11 @@
 import { Map } from './UI/Map';
 
+import { GOOGLE_APY_KEY } from '../api-key';
+
 class LoadedPlace {
   constructor(coordinates, address) {
+    document.querySelector('script').src += GOOGLE_APY_KEY;
+
     new Map(coordinates);
     const headerTitleEl = document.querySelector('header h1');
     headerTitleEl.textContent = address;
